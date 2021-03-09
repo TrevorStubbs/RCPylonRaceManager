@@ -17,6 +17,9 @@ namespace RCPylonRaceManagerWithSQLServer.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Heat>().HasKey(x => new { x.RaceDayId, x.RoundNumber });
+            modelBuilder.Entity<RaceDayPilot>().HasKey(x => new { x.SeasonPilotId, x.RaceDayId });
+
             modelBuilder.Entity<Season>().HasData(
                 new Season
                 {
