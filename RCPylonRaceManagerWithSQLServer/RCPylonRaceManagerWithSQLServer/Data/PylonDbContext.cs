@@ -29,7 +29,11 @@ namespace RCPylonRaceManagerWithSQLServer.Data
         }
 
         public DbSet<Season> Seasons { get; set; }
-
-
+        public DbSet<Heat> Heats { get; set; }
+        public DbSet<HeatPilot> HeatPilots { get; set; }
+        public DbSet<RaceDay> RaceDays { get; set; }
+        public DbSet<RaceDayPilot> RaceDayPilots { get; set; }
+        public DbSet<Round> Rounds { get; set; }
+        public DbSet<SeasonPilot> SeasonPilots { get; set; }
     }
 }

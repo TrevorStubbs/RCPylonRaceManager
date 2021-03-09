@@ -12,7 +12,7 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Entities
         public bool IsDNF { get; set; }
 
         // Nav Properties
-        public RaceDayPilot RaceDayPilot { get; set; }
-        public Heat Heat { get; set; }
+        // public RaceDayPilot RaceDayPilot { get; set; }
+        // public Heat Heat { get; set; }
     }
 }

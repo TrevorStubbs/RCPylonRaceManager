@@ -11,6 +11,6 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Entities
         public int RoundNumber { get; set; }
 
         // Nav Properties
-        public RaceDay RaceDay { get; set; }
+        // public RaceDay RaceDay { get; set; }
     }
 }

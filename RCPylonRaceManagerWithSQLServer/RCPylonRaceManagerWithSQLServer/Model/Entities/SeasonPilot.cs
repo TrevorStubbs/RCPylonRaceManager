@@ -18,7 +18,7 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Entities
         public string Email { get; set; }
 
         // Nav Properties
-        public Season Season { get; set; }
-        public RaceDayPilot RaceDayPilot { get; set; }
+        //public Season Season { get; set; }
+        //public RaceDayPilot RaceDayPilot { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Entities
         public int RoundNumber { get; set; }
 
         // Nav Properties
-        public Round Round { get; set; }
-        public HeatPilot HeatPilot { get; set; }
+        // public Round Round { get; set; }
+        // public HeatPilot HeatPilot { get; set; }
     }
 }

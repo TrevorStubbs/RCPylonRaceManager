@@ -13,6 +13,6 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Entities
         public DateTime Date { get; set; }
 
         // Nav Properties
-        public Season Season { get; set; }
+        // public Season Season { get; set; }
     }
 }

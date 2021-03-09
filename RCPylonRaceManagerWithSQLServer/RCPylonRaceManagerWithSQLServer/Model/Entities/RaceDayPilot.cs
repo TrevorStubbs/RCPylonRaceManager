@@ -12,7 +12,7 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Entities
         public bool IsOTS { get; set; }
 
         // Nav Properties
-        public HeatPilot HeatPilot { get; set; }
-        public SeasonPilot SeasonPilot { get; set; }
+        // public HeatPilot HeatPilot { get; set; }
+        // public SeasonPilot SeasonPilot { get; set; }
     }
 }
