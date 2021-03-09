@@ -8,5 +8,9 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Entities
     {
         public int Id { get; set; }
         public int Year { get; set; }
+
+        // Nav Properties
+        //public RaceDay RaceDay { get; set; }
+        //public SeasonPilot SeasonPilot { get; set; }
     }
 }
