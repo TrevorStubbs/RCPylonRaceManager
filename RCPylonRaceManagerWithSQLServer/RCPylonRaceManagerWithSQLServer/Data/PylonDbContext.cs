@@ -17,8 +17,8 @@ namespace RCPylonRaceManagerWithSQLServer.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Heat>().HasKey(x => new { x.RaceDayId, x.RoundNumber });
-            modelBuilder.Entity<RaceDayPilot>().HasKey(x => new { x.SeasonPilotId, x.RaceDayId });
+            modelBuilder.Entity<RaceDayPilot>().HasKey(x => new { x.RaceDayId, x.SeasonPilotId });
+            modelBuilder.Entity<HeatPilot>().HasKey(x => new { x.SeasonPilotId, x.HeatId });
 
             modelBuilder.Entity<Season>().HasData(
                 new Season
@@ -26,6 +26,18 @@ namespace RCPylonRaceManagerWithSQLServer.Data
                     Id = 1,
                     Year = 2021
                 });
+
+            //modelBuilder.Entity<SeasonPilot>().HasData(
+            //    new SeasonPilot
+            //    {
+            //        Id = 1,
+            //        SeasonId = 1,
+            //        FirstName = "Trevor",
+            //        LastName = "Stubbs",
+            //        AMANumber = 12345,
+            //        Email = "stubbste@gmail.com",
+            //        SeasonScore = 0
+            //    });
         }
 
         public DbSet<Season> Seasons { get; set; }
