@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RCPylonRaceManagerWithSQLServer.Migrations
 {
-    public partial class entitiesWithNav : Migration
+    public partial class reinitalMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,8 +67,8 @@ namespace RCPylonRaceManagerWithSQLServer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoundNumber = table.Column<int>(type: "int", nullable: false),
-                    RaceDayId = table.Column<int>(type: "int", nullable: true)
+                    RaceDayId = table.Column<int>(type: "int", nullable: false),
+                    RoundNumber = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,7 +78,7 @@ namespace RCPylonRaceManagerWithSQLServer.Migrations
                         column: x => x.RaceDayId,
                         principalTable: "RaceDays",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -91,7 +91,7 @@ namespace RCPylonRaceManagerWithSQLServer.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AMANumber = table.Column<int>(type: "int", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     SeasonScore = table.Column<int>(type: "int", nullable: false),
                     RaceDayPilotRaceDayId = table.Column<int>(type: "int", nullable: true),
                     RaceDayPilotSeasonPilotId = table.Column<int>(type: "int", nullable: true)
@@ -119,8 +119,8 @@ namespace RCPylonRaceManagerWithSQLServer.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RaceDayId = table.Column<int>(type: "int", nullable: false),
-                    RoundId = table.Column<int>(type: "int", nullable: false)
+                    RoundId = table.Column<int>(type: "int", nullable: false),
+                    HeatNumber = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -191,6 +191,13 @@ namespace RCPylonRaceManagerWithSQLServer.Migrations
                 name: "IX_Rounds_RaceDayId",
                 table: "Rounds",
                 column: "RaceDayId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SeasonPilots_Email",
+                table: "SeasonPilots",
+                column: "Email",
+                unique: true,
+                filter: "[Email] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SeasonPilots_RaceDayPilotRaceDayId_RaceDayPilotSeasonPilotId",

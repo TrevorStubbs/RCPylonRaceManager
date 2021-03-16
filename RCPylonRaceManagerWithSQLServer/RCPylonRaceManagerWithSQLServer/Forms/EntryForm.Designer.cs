@@ -1,4 +1,6 @@
 ﻿
+using System.Threading.Tasks;
+
 namespace RCPylonRaceManagerWithSQLServer.Forms
 {
     partial class EntryForm

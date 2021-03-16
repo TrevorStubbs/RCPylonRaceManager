@@ -8,10 +8,10 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Entities
     public class Heat
     {
         public int Id { get; set; }
-        //[ForeignKey("RaceDay")]
-        public int RaceDayId { get; set; }
+
         //[ForeignKey("RoundId")]
         public int RoundId { get; set; }
+        public int HeatNumber { get; set; }
 
         // Nav Properties
         public Round Round { get; set; }

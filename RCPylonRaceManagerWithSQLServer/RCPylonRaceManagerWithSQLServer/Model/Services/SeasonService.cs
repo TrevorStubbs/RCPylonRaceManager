@@ -27,7 +27,7 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Services
                 Year = seasonDTO.Year
             };
 
-            _context.Entry(seasonEntity).State = Microsoft.EntityFrameworkCore.EntityState.Added;
+            _context.Entry(seasonEntity).State = EntityState.Added;
             await _context.SaveChangesAsync();
         }
 
@@ -71,7 +71,7 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Services
 
             if (season != null)
             {
-                season.Year = seasonDTO != null ? seasonDTO.Year : season.Year;
+                season.Year = seasonDTO.Year != default ? seasonDTO.Year : season.Year;
 
                 _context.Entry(season).State = EntityState.Modified;
                 await _context.SaveChangesAsync();

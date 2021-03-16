@@ -26,7 +26,7 @@ namespace RCPylonRaceManagerWithSQLServer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("RaceDayId")
+                    b.Property<int>("HeatNumber")
                         .HasColumnType("int");
 
                     b.Property<int>("RoundId")
@@ -120,7 +120,7 @@ namespace RCPylonRaceManagerWithSQLServer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("RaceDayId")
+                    b.Property<int>("RaceDayId")
                         .HasColumnType("int");
 
                     b.Property<int>("RoundNumber")
@@ -166,7 +166,7 @@ namespace RCPylonRaceManagerWithSQLServer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -187,6 +187,10 @@ namespace RCPylonRaceManagerWithSQLServer.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
 
                     b.HasIndex("SeasonId");
 
@@ -247,7 +251,9 @@ namespace RCPylonRaceManagerWithSQLServer.Migrations
                 {
                     b.HasOne("RCPylonRaceManagerWithSQLServer.Model.Entities.RaceDay", "RaceDay")
                         .WithMany("Rounds")
-                        .HasForeignKey("RaceDayId");
+                        .HasForeignKey("RaceDayId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("RaceDay");
                 });

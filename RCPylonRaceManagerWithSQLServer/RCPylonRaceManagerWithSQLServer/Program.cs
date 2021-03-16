@@ -30,11 +30,12 @@ namespace RCPylonRaceManagerWithSQLServer
             {
                 var services = serviceScope.ServiceProvider;
                 var logger = services.GetRequiredService<ILogger<EntryForm>>();
+                var entryForm = services.GetRequiredService<EntryForm>();
 
                 try
-                {
-                    var context = services.GetRequiredService<PylonDbContext>();
-                    Application.Run(new EntryForm(context));
+                {                    
+                    //var context = services.GetRequiredService<PylonDbContext>();
+                    Application.Run(entryForm);
 
                     logger.LogInformation("Application has STARTED");
 

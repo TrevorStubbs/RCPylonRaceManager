@@ -20,6 +20,9 @@ namespace RCPylonRaceManagerWithSQLServer.Data
             modelBuilder.Entity<RaceDayPilot>().HasKey(x => new { x.RaceDayId, x.SeasonPilotId });
             modelBuilder.Entity<HeatPilot>().HasKey(x => new { x.SeasonPilotId, x.HeatId });
 
+            // This might break it.
+            modelBuilder.Entity<SeasonPilot>().HasIndex(x => x.Email).IsUnique();
+
             modelBuilder.Entity<Season>().HasData(
                 new Season
                 {
