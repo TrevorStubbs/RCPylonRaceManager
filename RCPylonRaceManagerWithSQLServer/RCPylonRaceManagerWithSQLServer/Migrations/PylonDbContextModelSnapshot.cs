@@ -26,7 +26,7 @@ namespace RCPylonRaceManagerWithSQLServer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("RaceDayId")
+                    b.Property<int>("HeatNumber")
                         .HasColumnType("int");
 
                     b.Property<int>("RoundId")

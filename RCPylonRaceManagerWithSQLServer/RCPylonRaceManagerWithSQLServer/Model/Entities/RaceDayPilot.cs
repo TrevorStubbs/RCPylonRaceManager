@@ -11,6 +11,8 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Entities
         public int RaceDayScore { get; set; }
         public bool HasPaid { get; set; }
         public bool IsOTS { get; set; }
+        public TimeSpan FastestRaceTime { get; set; }
+        public TimeSpan LastRaceTime { get; set; }
 
         // Nav Properties
         public List<HeatPilot> HeatPilots { get; set; }

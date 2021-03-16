@@ -11,5 +11,7 @@ namespace RCPylonRaceManagerWithSQLServer.Model.DTOs
         public int RaceDayScore { get; set; }
         public bool HasPaid { get; set; }
         public bool IsOTS { get; set; }
+        public TimeSpan FastestRaceTime { get; set; }
+        public TimeSpan LastRaceTime { get; set; }
     }
 }

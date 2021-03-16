@@ -27,7 +27,7 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Services
                 RaceDayId = newPilot.RaceDayId,
                 RaceDayScore = newPilot.RaceDayScore,
                 HasPaid = newPilot.HasPaid,
-                IsOTS = newPilot.IsOTS
+                IsOTS = newPilot.IsOTS                
             };
 
             _context.Entry(pilot).State = EntityState.Added;
@@ -50,7 +50,9 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Services
                         RaceDayId = pilot.RaceDayId,
                         RaceDayScore = pilot.RaceDayScore,
                         HasPaid = pilot.HasPaid,
-                        IsOTS = pilot.IsOTS
+                        IsOTS = pilot.IsOTS,
+                        FastestRaceTime = pilot.FastestRaceTime,
+                        LastRaceTime = pilot.LastRaceTime
                     });
                 }
             }
@@ -74,7 +76,9 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Services
                         RaceDayId = pilot.RaceDayId,
                         RaceDayScore = pilot.RaceDayScore,
                         HasPaid = pilot.HasPaid,
-                        IsOTS = pilot.IsOTS
+                        IsOTS = pilot.IsOTS,
+                        FastestRaceTime = pilot.FastestRaceTime,
+                        LastRaceTime = pilot.LastRaceTime
                     });
                 }
             }
@@ -95,6 +99,8 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Services
                 pilotDTO.RaceDayScore = pilot.RaceDayScore;
                 pilotDTO.HasPaid = pilot.HasPaid;
                 pilotDTO.IsOTS = pilot.IsOTS;
+                pilotDTO.FastestRaceTime = pilot.FastestRaceTime;
+                pilotDTO.LastRaceTime = pilot.LastRaceTime;
             }
 
             return pilotDTO;
@@ -109,8 +115,10 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Services
                 pilot.SeasonPilotId = updatePilot.SeasonPilotId != default ? updatePilot.SeasonPilotId : pilot.SeasonPilotId;
                 pilot.RaceDayId = updatePilot.RaceDayId != default ? updatePilot.RaceDayId : pilot.RaceDayId;
                 pilot.RaceDayScore = updatePilot.RaceDayScore != default ? updatePilot.RaceDayScore : pilot.RaceDayScore;
-                pilot.HasPaid = !updatePilot.HasPaid ? updatePilot.HasPaid : pilot.HasPaid;
-                pilot.IsOTS = !updatePilot.IsOTS ? updatePilot.IsOTS : pilot.IsOTS;
+                pilot.HasPaid = updatePilot.HasPaid;
+                pilot.IsOTS = updatePilot.IsOTS;
+                pilot.FastestRaceTime = updatePilot.FastestRaceTime;
+                pilot.LastRaceTime = updatePilot.LastRaceTime;
             }
 
             _context.Entry(pilot).State = EntityState.Modified;

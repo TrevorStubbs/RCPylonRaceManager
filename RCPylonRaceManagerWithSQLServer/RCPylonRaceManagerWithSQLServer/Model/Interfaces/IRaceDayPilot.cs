@@ -19,6 +19,6 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Interfaces
         // UpdateRaceDayPilot
         Task UpdateARaceDayPilot(RaceDayPilotDTO updatePilot);
         // Delete
-        Task DeleteARaceDayPilot(int seasonPilotId, int raceDayId);;
+        Task DeleteARaceDayPilot(int seasonPilotId, int raceDayId);
     }
 }
