@@ -7,10 +7,12 @@ namespace RCPylonRaceManagerWithSQLServer.Model.Entities
 {
     public class Round
     {
-        [Key]
+        public int Id { get; set; }
+        public int RaceDayId { get; set; }
         public int RoundNumber { get; set; }
 
         // Nav Properties
-        // public RaceDay RaceDay { get; set; }
+        public RaceDay RaceDay { get; set; }
+        public List<Heat> Heats { get; set; }
     }
 }

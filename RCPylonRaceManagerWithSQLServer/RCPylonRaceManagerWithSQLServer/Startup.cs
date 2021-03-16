@@ -2,6 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RCPylonRaceManagerWithSQLServer.Data;
+using RCPylonRaceManagerWithSQLServer.Forms;
+using RCPylonRaceManagerWithSQLServer.Model.Interfaces;
+using RCPylonRaceManagerWithSQLServer.Model.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,6 +28,16 @@ namespace RCPylonRaceManagerWithSQLServer
             {
                 options.UseSqlServer(Config.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddTransient<IHeat, HeatService>();
+            services.AddTransient<IHeatPilot, HeatPilotService>();
+            services.AddTransient<IRaceDay, RaceDayService>();
+            services.AddTransient<IRaceDayPilot, RaceDayPilotService>();
+            services.AddTransient<IRound, RoundService>();
+            services.AddTransient<ISeasonPilot, SeasonPilotService>();
+            services.AddTransient<ISeason, SeasonService>();
+            services.AddScoped<EntryForm>();
+
         }
     }
 }

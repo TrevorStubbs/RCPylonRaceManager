@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace RCPylonRaceManagerWithSQLServer.Model.Entities
 {
     public class Heat
     {
-        public int RaceDayId { get; set; }
-        public int RoundNumber { get; set; }
+        public int Id { get; set; }
+
+        //[ForeignKey("RoundId")]
+        public int RoundId { get; set; }
+        public int HeatNumber { get; set; }
 
         // Nav Properties
-        // public Round Round { get; set; }
-        // public HeatPilot HeatPilot { get; set; }
+        public Round Round { get; set; }
+        public List<HeatPilot> HeatPilots { get; set; }
     }
 }

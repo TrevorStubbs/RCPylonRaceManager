@@ -1,4 +1,6 @@
 ﻿
+using System.Threading.Tasks;
+
 namespace RCPylonRaceManagerWithSQLServer.Forms
 {
     partial class EntryForm
@@ -35,9 +37,10 @@ namespace RCPylonRaceManagerWithSQLServer.Forms
             // 
             // ShowSeason
             // 
-            this.ShowSeason.Location = new System.Drawing.Point(352, 151);
+            this.ShowSeason.Location = new System.Drawing.Point(308, 113);
+            this.ShowSeason.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ShowSeason.Name = "ShowSeason";
-            this.ShowSeason.Size = new System.Drawing.Size(94, 29);
+            this.ShowSeason.Size = new System.Drawing.Size(82, 22);
             this.ShowSeason.TabIndex = 0;
             this.ShowSeason.Text = "Show Season";
             this.ShowSeason.UseVisualStyleBackColor = true;
@@ -45,9 +48,10 @@ namespace RCPylonRaceManagerWithSQLServer.Forms
             // 
             // Quit
             // 
-            this.Quit.Location = new System.Drawing.Point(517, 290);
+            this.Quit.Location = new System.Drawing.Point(308, 233);
+            this.Quit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Quit.Name = "Quit";
-            this.Quit.Size = new System.Drawing.Size(94, 29);
+            this.Quit.Size = new System.Drawing.Size(82, 22);
             this.Quit.TabIndex = 1;
             this.Quit.Text = "Quit";
             this.Quit.UseVisualStyleBackColor = true;
@@ -55,11 +59,12 @@ namespace RCPylonRaceManagerWithSQLServer.Forms
             // 
             // EntryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(700, 338);
             this.Controls.Add(this.Quit);
             this.Controls.Add(this.ShowSeason);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "EntryForm";
             this.Text = "EntryForm";
             this.ResumeLayout(false);
