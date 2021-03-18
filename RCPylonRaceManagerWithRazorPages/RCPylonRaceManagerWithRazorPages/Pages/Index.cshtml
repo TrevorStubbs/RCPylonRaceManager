@@ -1,0 +1,33 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Season Select";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Season Select</h1>
+</div>
+@*TODO: Make Dynamic and in a Component*@
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2021</td>
+            </tr>
+            <tr>
+                <td>2022</td>
+            </tr>
+            <tr>
+                <td>2023</td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" asp-page="/Season">Go To Season</a>
+    <button class="btn btn-primary">Add Season</button>
+    <button class="btn btn-danger">Quit</button>
+</div>
