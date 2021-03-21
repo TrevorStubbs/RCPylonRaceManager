@@ -31,6 +31,7 @@ namespace RCPylonRaceManagerWithRazorPages
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddServerSideBlazor();
 
             services.AddDbContext<PylonDbContext>(options =>
             {
@@ -70,6 +71,7 @@ namespace RCPylonRaceManagerWithRazorPages
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
             });
         }
     }
