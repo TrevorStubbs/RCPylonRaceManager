@@ -72,6 +72,7 @@ namespace RCPylonRaceManagerWithRazorPages
             {
                 endpoints.MapRazorPages();
                 endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/_Host");
             });
         }
     }

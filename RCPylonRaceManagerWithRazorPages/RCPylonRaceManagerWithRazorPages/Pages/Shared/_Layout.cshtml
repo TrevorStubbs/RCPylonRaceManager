@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - Pylon Race Manager</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <base href="~/" />
 </head>
 <body>
     <header>
@@ -47,5 +48,7 @@
 
     @await RenderSectionAsync("Scripts", required: false)
     <script src="_framework/blazor.server.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

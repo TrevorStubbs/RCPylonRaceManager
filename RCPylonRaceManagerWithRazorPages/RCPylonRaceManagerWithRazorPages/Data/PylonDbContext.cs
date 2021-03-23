@@ -29,6 +29,17 @@ namespace RCPylonRaceManagerWithRazorPages.Data
                     Id = 1,
                     Year = 2021
                 });
+            modelBuilder.Entity<SeasonPilot>().HasData(
+                new SeasonPilot
+                {
+                    Id = 1,
+                    SeasonId = 1,
+                    FirstName = "Trevor",
+                    LastName = "Stubbs",
+                    AMANumber = 12345,
+                    Email = "stubbste@gmail.com",
+                    SeasonScore = 21
+                });
 
             //modelBuilder.Entity<SeasonPilot>().HasData(
             //    new SeasonPilot

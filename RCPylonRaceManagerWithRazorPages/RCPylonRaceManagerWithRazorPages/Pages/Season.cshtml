@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/season/{year:int?}"
 @using RCPylonRaceManagerWithRazorPages.Components 
 @model RCPylonRaceManagerWithRazorPages.Pages.SeasonModel
 @{
@@ -45,5 +45,9 @@
 </div>
 <hr />
 <div>
-    @(await Html.RenderComponentAsync<SeasonTable>(RenderMode.ServerPrerendered))
+    <h3>Single Pilot</h3>
+    <hr />
+    @(await Html.RenderComponentAsync<SeasonTable>(RenderMode.ServerPrerendered, @Model.SeasonComponentObject))
+    <h3>Web Assembly</h3>
+    @(await Html.RenderComponentAsync<SeasonTable>(RenderMode.WebAssemblyPrerendered, @Model.SeasonComponentObject))
 </div>

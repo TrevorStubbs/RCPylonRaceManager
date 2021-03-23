@@ -1,5 +1,21 @@
-﻿<h3>SeasonTable</h3>
+﻿@page "/seasontable"
+@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+<h3>SeasonTable</h3>
+<p>The Year is: @SeasonDTO.Year</p>
+
+@foreach (var pilot in SeasonPilotDTOs)
+{
+    <SeasonTableData SeasonPilotDTO="@pilot" />
+}
 
 @code {
+    [Parameter]
+    public List<SeasonPilotDTO> SeasonPilotDTOs { get; set; }
 
+    [Parameter]
+    public SeasonDTO SeasonDTO { get; set; }
+
+    [Parameter]
+    public SeasonPilotDTO SeasonPilotDTO { get; set; }
 }
