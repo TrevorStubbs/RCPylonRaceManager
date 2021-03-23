@@ -1,0 +1,15 @@
+﻿@page "/seasondata"
+@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+<tr>
+    <td>@SeasonPilotDTO.FirstName @SeasonPilotDTO.LastName</td>
+    <td>@SeasonPilotDTO.SeasonScore</td>
+    <td>@SeasonPilotDTO.Email</td>
+    <td>@SeasonPilotDTO.AMANumber</td>
+</tr>
+
+
+@code {
+    [Parameter]
+    public SeasonPilotDTO SeasonPilotDTO { get; set; }
+}

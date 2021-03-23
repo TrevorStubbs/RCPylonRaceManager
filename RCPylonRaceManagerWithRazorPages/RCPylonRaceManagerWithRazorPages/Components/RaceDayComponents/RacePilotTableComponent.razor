@@ -1,0 +1,30 @@
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+<table class="table">
+    <thead>
+        <tr class="text-center">
+            <th colspan="3">Race Pilots</th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>Has Paid</th>
+            <th>Pilot Name</th>
+            <th>Score</th>
+            <th>Fastest Race Time</th>
+            <th>Last Race Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pilot in Pilots)
+        {
+            <RacePilotTableDataComponent Pilot="@pilot" />
+        }
+    </tbody>
+</table>
+<button class="btn btn-primary">Add Pilot</button>
+
+@code {
+    [Parameter]
+    public List<RaceDayPilotDTO> Pilots { get; set; }
+}

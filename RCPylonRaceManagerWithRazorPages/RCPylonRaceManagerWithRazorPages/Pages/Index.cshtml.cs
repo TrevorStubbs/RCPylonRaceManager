@@ -20,6 +20,7 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
         public int Year { get; set; }
         public SeasonDTO SeasonDTO { get; set; }
         public IHtmlContent ListData { get; set; }
+        public IndexTableSendObject SendObject { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, ISeason season)
         {
@@ -29,19 +30,20 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
 
         public async Task<IActionResult> OnGet()
         {
-            var season = await _season.GetASeason(2021);
-            SeasonDTO = new SeasonDTO()
+            var seasons = await _season.GetAllSeasons();
+
+            SendObject = new IndexTableSendObject
             {
-                Year = season.Year
+                Seasons = seasons
             };
-
-            var builder = new HtmlContentBuilder();
-
-            builder.AppendFormat($"<td>{season.Year}</td>");
-
-            ListData = builder;
 
             return Page();
         }
+        
+    }
+
+    public class IndexTableSendObject
+    {
+        public List<SeasonDTO> Seasons { get; set; }
     }
 }

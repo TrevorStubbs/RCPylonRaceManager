@@ -1,4 +1,5 @@
 ﻿@page
+@using RCPylonRaceManagerWithRazorPages.Components.RaceDayComponents
 @model RCPylonRaceManagerWithRazorPages.Pages.RaceModel
 @{
     Layout = "_Layout";
@@ -10,37 +11,7 @@
 </div>
 @*TODO: Make as Component and Render Dynamically*@
 <div>
-    <table class="table">
-        <thead>
-            <tr class="text-center">
-                <th colspan="3">Race Pilots</th>
-            </tr>
-        </thead>
-        <thead>
-            <tr>
-                <th>Has Paid</th>
-                <th>Pilot Name</th>
-                <th>Score</th>
-                <th>Fastest Race Time</th>
-                <th>Last Race Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input type="checkbox" checked /></td>
-                <td>Trevor Stubbs</td>
-                <td>3:16</td>
-                <td>4:22</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" checked /></td>
-                <td>Roy Stubbs</td>
-                <td>3:11</td>
-                <td>3:55</td>
-            </tr>
-        </tbody>
-    </table>
-    <button class="btn btn-primary">Add Pilot</button>
+    @(await Html.RenderComponentAsync<RacePilotTableComponent>(RenderMode.WebAssemblyPrerendered, Model.PilotTable))
 </div>
 <div>
     <a class="btn btn-primary" asp-page="/Round">Start New Round</a>

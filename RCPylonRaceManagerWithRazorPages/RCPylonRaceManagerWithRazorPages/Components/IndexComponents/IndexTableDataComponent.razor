@@ -1,0 +1,10 @@
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+<tr>
+    <td>@Season.Year</td>
+</tr>
+
+@code {
+    [Parameter]
+    public SeasonDTO Season { get; set; }
+}

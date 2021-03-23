@@ -14,9 +14,8 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
         private readonly ISeason _season;
         private readonly ISeasonPilot _pilot;
 
-        public SeasonDTO SeasonDTO { get; set; }
-        public SeasonPilotDTO SeasonPilotDTO { get; set; }
-        public SeasonComponentObject SeasonComponentObject { get; set; }
+        public SeasonDTO Season { get; set; }
+        public SeasonTableSendObject SendObject { get; set; }
 
 
         public SeasonModel(ISeason season, ISeasonPilot pilot)
@@ -27,21 +26,17 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
 
         public async Task OnGet(int year)
         {
-            SeasonDTO = await _season.GetASeason(year);
-            SeasonPilotDTO = await _pilot.GetASeasonPilot(1);
-            SeasonComponentObject = new SeasonComponentObject()
+            Season = await _season.GetASeason(year);
+
+            SendObject = new SeasonTableSendObject()
             {
                 SeasonPilotDTOs = await _pilot.GetAllSeasonsPilots(),
-                SeasonDTO = await _season.GetASeason(year),
-                SeasonPilotDTO = await _pilot.GetASeasonPilot(1)
             };
         }
     }
 
-    public class SeasonComponentObject
+    public class SeasonTableSendObject
     {
-        public SeasonDTO SeasonDTO { get; set; }
-        public SeasonPilotDTO SeasonPilotDTO { get; set; }
         public List<SeasonPilotDTO> SeasonPilotDTOs { get; set; }
     }
 

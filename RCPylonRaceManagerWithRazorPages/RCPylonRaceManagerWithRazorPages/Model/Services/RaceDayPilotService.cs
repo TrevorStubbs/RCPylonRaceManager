@@ -14,10 +14,12 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
     public class RaceDayPilotService : IRaceDayPilot
     {
         private readonly PylonDbContext _context;
+        private readonly ISeasonPilot _seasonPilot;
 
-        public RaceDayPilotService(PylonDbContext context)
+        public RaceDayPilotService(PylonDbContext context, ISeasonPilot seasonPilot)
         {
             _context = context;
+            _seasonPilot = seasonPilot;
         }
         public async Task CreateRaceDayPilot(RaceDayPilotDTO newPilot)
         {
@@ -52,7 +54,8 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                         HasPaid = pilot.HasPaid,
                         IsOTS = pilot.IsOTS,
                         FastestRaceTime = pilot.FastestRaceTime,
-                        LastRaceTime = pilot.LastRaceTime
+                        LastRaceTime = pilot.LastRaceTime,
+                        PilotInfo = await _seasonPilot.GetASeasonPilot(pilot.SeasonPilotId)
                     });
                 }
             }
@@ -78,7 +81,8 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                         HasPaid = pilot.HasPaid,
                         IsOTS = pilot.IsOTS,
                         FastestRaceTime = pilot.FastestRaceTime,
-                        LastRaceTime = pilot.LastRaceTime
+                        LastRaceTime = pilot.LastRaceTime,
+                        PilotInfo = await _seasonPilot.GetASeasonPilot(pilot.SeasonPilotId)
                     });
                 }
             }
@@ -101,6 +105,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                 pilotDTO.IsOTS = pilot.IsOTS;
                 pilotDTO.FastestRaceTime = pilot.FastestRaceTime;
                 pilotDTO.LastRaceTime = pilot.LastRaceTime;
+                pilotDTO.PilotInfo = await _seasonPilot.GetASeasonPilot(pilot.SeasonPilotId);
             }
 
             return pilotDTO;
