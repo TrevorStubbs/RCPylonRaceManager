@@ -62,7 +62,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             return pilotList;
         }
 
-        public async Task<List<HeatPilotDTO>> GetALlHeatPilotsForHeat(int heatId)
+        public async Task<List<HeatPilotDTO>> GetAllHeatPilotsForHeat(int heatId)
         {
             var pilots = await _context.HeatPilots.Where(x => x.HeatId == heatId).ToListAsync();
 

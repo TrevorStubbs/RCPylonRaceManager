@@ -39,7 +39,7 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
 
             RoundTable = new RaceRoundSendObject
             {
-                Rounds = await _round.GetALLRoundsForRaceDay(raceId)
+                Rounds = await _round.GetAllRoundsForRaceDay(raceId)
             };
         }
     }

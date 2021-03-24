@@ -14,10 +14,12 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
     public class HeatService : IHeat
     {
         private readonly PylonDbContext _context;
+        private readonly IHeatPilot _heatPilot;
 
-        public HeatService(PylonDbContext context)
+        public HeatService(PylonDbContext context, IHeatPilot heatPilot)
         {
             _context = context;
+            _heatPilot = heatPilot;
         }
 
         public async Task CreateHeat(HeatDTO newHeat)
@@ -42,10 +44,13 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             {
                 foreach (var heat in heats)
                 {
+                    var heatPilots = await _heatPilot.GetAllHeatPilotsForHeat(heat.Id);
+
                     heatsList.Add(new HeatDTO()
                     {
                         RoundId = heat.RoundId,
-                        HeatNumber = heat.HeatNumber
+                        HeatNumber = heat.HeatNumber,
+                        HeatPilots = heatPilots
                     });
                 }
             }
@@ -63,6 +68,8 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             {
                 foreach (var heat in heats)
                 {
+                    var heatPilots = await _heatPilot.GetAllHeatPilotsForHeat(heat.Id);
+
                     heatsList.Add(new HeatDTO()
                     {
                         RoundId = heat.RoundId,
@@ -78,12 +85,15 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
         {
             var heat = await _context.Heats.FirstOrDefaultAsync(x => x.Id == heatId);
 
+            var heatPilots = await _heatPilot.GetAllHeatPilotsForHeat(heat.Id);
+
             var heatDTO = new HeatDTO();
             
             if(heat != null)
             {
                 heatDTO.RoundId = heat.RoundId;
                 heatDTO.HeatNumber = heat.HeatNumber;
+                heatDTO.HeatPilots = heatPilots;
             }
 
             return heatDTO;

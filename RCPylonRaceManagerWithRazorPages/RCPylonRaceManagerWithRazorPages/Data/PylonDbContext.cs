@@ -28,7 +28,7 @@ namespace RCPylonRaceManagerWithRazorPages.Data
                 {
                     Id = 1,
                     Year = 2021
-                });            
+                });
             modelBuilder.Entity<SeasonPilot>().HasData(
                 new SeasonPilot
                 {
@@ -49,6 +49,16 @@ namespace RCPylonRaceManagerWithRazorPages.Data
                     AMANumber = 56789,
                     Email = "roycstubbs@gmail.com",
                     SeasonScore = 20
+                },
+                new SeasonPilot
+                {
+                    Id = 3,
+                    SeasonId = 1,
+                    FirstName = "David",
+                    LastName = "Beardsley",
+                    AMANumber = 102354,
+                    Email = "daveBeardsley@gmail.com",
+                    SeasonScore = 15
                 });
             modelBuilder.Entity<RaceDay>().HasData(
                 new RaceDay
@@ -83,6 +93,16 @@ namespace RCPylonRaceManagerWithRazorPages.Data
                     IsOTS = false,
                     FastestRaceTime = new TimeSpan(0, 3, 20),
                     LastRaceTime = new TimeSpan(0, 3, 40)
+                },
+                new RaceDayPilot
+                {
+                    SeasonPilotId = 3,
+                    RaceDayId = 1,
+                    RaceDayScore = 5,
+                    HasPaid = true,
+                    IsOTS = true,
+                    FastestRaceTime = new TimeSpan(0, 3, 25),
+                    LastRaceTime = new TimeSpan(0, 3, 59)
                 });
             modelBuilder.Entity<Round>().HasData(
                 new Round
@@ -119,13 +139,13 @@ namespace RCPylonRaceManagerWithRazorPages.Data
                     RaceTime = new TimeSpan(0, 3, 39),
                     IsDNF = false
                 },
-                new HeatPilot 
+                new HeatPilot
                 {
                     SeasonPilotId = 2,
-                    HeatId = 1, 
+                    HeatId = 1,
                     Position = 2,
                     RaceTime = new TimeSpan(0, 3, 40),
-                    IsDNF =  false
+                    IsDNF = false
                 });
 
         }

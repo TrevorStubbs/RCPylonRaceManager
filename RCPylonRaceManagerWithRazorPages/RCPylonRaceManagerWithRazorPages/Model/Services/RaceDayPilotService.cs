@@ -90,6 +90,33 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             return pilotList;
         }
 
+        public async Task<List<RaceDayPilotDTO>> GetAllRaceDayPilotsWhoAreOTS(int raceDayId)
+        {
+            var pilots = await _context.RaceDayPilots.Where(x => x.RaceDayId == raceDayId && x.IsOTS).ToListAsync();
+
+            var pilotList = new List<RaceDayPilotDTO>();
+
+            if (pilots.Any())
+            {
+                foreach (var pilot in pilots)
+                {
+                    pilotList.Add(new RaceDayPilotDTO
+                    {
+                        SeasonPilotId = pilot.SeasonPilotId,
+                        RaceDayId = pilot.RaceDayId,
+                        RaceDayScore = pilot.RaceDayScore,
+                        HasPaid = pilot.HasPaid,
+                        IsOTS = pilot.IsOTS,
+                        FastestRaceTime = pilot.FastestRaceTime,
+                        LastRaceTime = pilot.LastRaceTime,
+                        PilotInfo = await _seasonPilot.GetASeasonPilot(pilot.SeasonPilotId)
+                    });
+                }
+            }
+
+            return pilotList;
+        }
+
         public async Task<RaceDayPilotDTO> GetARaceDayPilot(int seasonPilotId, int raceDayId)
         {
             var pilot = await _context.RaceDayPilots.FirstOrDefaultAsync(x => x.SeasonPilotId == seasonPilotId && x.RaceDayId == raceDayId);

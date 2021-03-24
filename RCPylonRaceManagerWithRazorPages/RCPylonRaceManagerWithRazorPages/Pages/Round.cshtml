@@ -1,4 +1,5 @@
 ﻿@page
+@using RCPylonRaceManagerWithRazorPages.Components.RoundComponents
 @model RCPylonRaceManagerWithRazorPages.Pages.RoundModel
 @{
     Layout = "_Layout";
@@ -6,123 +7,15 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Round Panel</h1>
+    <h1 class="display-4">Round @Model.Round.RoundNumber</h1>
 </div>
 
 @*TODO: Make as Component and Render Dynamically*@
 <div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Heat #</th>
-                        </tr>
-                    </thead>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Pos</th>
-                            <th>Race Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Trevor Stubbs</td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-sm">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Heat #</th>
-                        </tr>
-                    </thead>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Pos</th>
-                            <th>Race Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Trevor Stubbs</td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Heat #</th>
-                        </tr>
-                    </thead>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Pos</th>
-                            <th>Race Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Trevor Stubbs</td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-sm">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Heat #</th>
-                        </tr>
-                    </thead>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Pos</th>
-                            <th>Race Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Trevor Stubbs</td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+    @(await Html.RenderComponentAsync<RoundHeatTableGridComponent>(RenderMode.WebAssemblyPrerendered, Model.HeatTables))
 </div>
 <div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Pilots with Broken Planes</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Roy Stubbs</td>
-            </tr>
-        </tbody>
-    </table>
+    @(await Html.RenderComponentAsync<RoundOTSPilotTableComponent>(RenderMode.WebAssemblyPrerendered, Model.OTSPilots))
 </div>
 <div>
     <button class="btn btn-primary">Finish Round</button>
