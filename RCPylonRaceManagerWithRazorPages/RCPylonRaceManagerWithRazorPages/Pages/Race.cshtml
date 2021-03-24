@@ -10,10 +10,17 @@
     <h1 class="display-4">Race Panel</h1>
 </div>
 @*TODO: Make as Component and Render Dynamically*@
-<div>
-    @(await Html.RenderComponentAsync<RacePilotTableComponent>(RenderMode.WebAssemblyPrerendered, Model.PilotTable))
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            @(await Html.RenderComponentAsync<RacePilotTableComponent>(RenderMode.WebAssemblyPrerendered, Model.PilotTable))
+        </div>
+        <div class="col-4">
+            @(await Html.RenderComponentAsync<RaceDayRoundTableComponent>(RenderMode.WebAssemblyPrerendered, Model.RoundTable))
+        </div>
+            <a class="btn btn-primary" asp-page="/Round">Start New Round</a>
+    </div>
 </div>
 <div>
-    <a class="btn btn-primary" asp-page="/Round">Start New Round</a>
     <button class="btn btn-outline-danger">Go Back</button>
 </div>

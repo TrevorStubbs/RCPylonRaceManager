@@ -11,5 +11,6 @@ namespace RCPylonRaceManagerWithRazorPages.Model.DTOs
         public int Position { get; set; }
         public TimeSpan RaceTime { get; set; }
         public bool IsDNF { get; set; }
+        public SeasonPilotDTO PilotInfo { get; set; }
     }
 }

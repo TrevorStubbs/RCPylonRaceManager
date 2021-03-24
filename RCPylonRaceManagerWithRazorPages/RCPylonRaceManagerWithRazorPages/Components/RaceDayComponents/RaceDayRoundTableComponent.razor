@@ -1,5 +1,21 @@
-﻿<h3>RaceDayRoundTableComponent</h3>
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+<table class="table table-hover">
+    <thead>
+        <tr class="text-center">
+            <th colspan="3">Round Select</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var round in Rounds)
+        {
+            <RaceDayRoundTableDataComponent Round="@round" />
+        }
+    </tbody>
+</table>
+<button class="btn btn-primary">Go To Round</button>
 
 @code {
-
+    [Parameter]
+    public List<RoundDTO> Rounds { get; set; }
 }
