@@ -127,7 +127,7 @@ namespace RCPylonRaceManagerWithRazorPages.Data
                 new Heat
                 {
                     Id = 2,
-                    RoundId = 2,
+                    RoundId = 1,
                     HeatNumber = 2
                 });
             modelBuilder.Entity<HeatPilot>().HasData(

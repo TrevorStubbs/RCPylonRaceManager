@@ -60,7 +60,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
 
         public async Task<List<HeatDTO>> GetAllHeatsForRound(int roundId)
         {
-            var heats = await _context.Heats.Where(x => x.Id == roundId).ToListAsync();
+            var heats = await _context.Heats.Where(x => x.RoundId == roundId).ToListAsync();
 
             var heatsList = new List<HeatDTO>();
 
@@ -73,7 +73,8 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                     heatsList.Add(new HeatDTO()
                     {
                         RoundId = heat.RoundId,
-                        HeatNumber = heat.HeatNumber
+                        HeatNumber = heat.HeatNumber,
+                        HeatPilots = heatPilots
                     });
                 }
             }

@@ -30,7 +30,7 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
 
             HeatTables = new RoundHeatTableSendObject()
             {
-                Heats = Round.Heats
+                ListOfHeats = GroupHeatsIntoGroupsOfTwo(Round.Heats)
             };
 
             OTSPilots = new RoundPilotOTSSendObject()
@@ -38,11 +38,42 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
                 OTSPilots = await _raceDayPilot.GetAllRaceDayPilotsWhoAreOTS(Round.RaceDayId)
             };
         }
+
+        private List<List<HeatDTO>> GroupHeatsIntoGroupsOfTwo(List<HeatDTO> heats)
+        {
+            var outlerList = new List<List<HeatDTO>>();
+
+            for (int i = 0; i < heats.Count; i++)
+            {
+                if (i == 0)
+                {
+                    var innerList = new List<HeatDTO>();
+
+                    innerList.Add(heats[i]);
+
+                    outlerList.Add(innerList);
+                }
+                else if (i % 2 == 0)
+                {
+                    var innerList = new List<HeatDTO>();
+
+                    innerList.Add(heats[i]);
+
+                    outlerList.Add(innerList);
+                }
+                else
+                {
+                    outlerList[outlerList.Count - 1].Add(heats[i]);
+                }
+
+            }
+            return outlerList;
+        }
     }
 
     public class RoundHeatTableSendObject
     {
-        public List<HeatDTO> Heats { get; set; }
+        public List<List<HeatDTO>> ListOfHeats { get; set; }
     }
 
     public class RoundPilotOTSSendObject

@@ -1,5 +1,29 @@
-﻿<h3>RoundHeatTableComponent</h3>
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+<div class="col-sm">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Heat @Heat.HeatNumber</th>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Pos</th>
+                <th>Race Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pilot in Heat.HeatPilots)
+            {
+                <RoundHeatTableDataComponent Pilot="@pilot" />
+            }
+        </tbody>
+    </table>
+</div>
 
 @code {
-
+    [Parameter]
+    public HeatDTO Heat { get; set; }
 }

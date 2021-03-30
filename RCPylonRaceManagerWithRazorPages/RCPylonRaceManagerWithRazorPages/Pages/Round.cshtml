@@ -1,5 +1,6 @@
 ﻿@page
 @using RCPylonRaceManagerWithRazorPages.Components.RoundComponents
+@using RCPylonRaceManagerWithRazorPages.Model.DTOs
 @model RCPylonRaceManagerWithRazorPages.Pages.RoundModel
 @{
     Layout = "_Layout";
@@ -14,7 +15,7 @@
 <div>
     @(await Html.RenderComponentAsync<RoundHeatTableGridComponent>(RenderMode.WebAssemblyPrerendered, Model.HeatTables))
 </div>
-<div>
+<div class="container">
     @(await Html.RenderComponentAsync<RoundOTSPilotTableComponent>(RenderMode.WebAssemblyPrerendered, Model.OTSPilots))
 </div>
 <div>

@@ -1,105 +1,19 @@
 ﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
 
+
 <div class="container">
-    <div class="row">
-        <div class="col-sm">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Heat #</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Pos</th>
-                        <th>Race Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Trevor Stubbs</td>
-                        <td><input type="text" /></td>
-                        <td><input type="text" /></td>
-                    </tr>
-                </tbody>
-            </table>
+    @foreach (var heats in ListOfHeats)
+    {
+        <div class="row">
+            @foreach (var heat in heats)
+            {
+                <RoundHeatTableComponent Heat="@heat" />
+            }
         </div>
-        <div class="col-sm">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Heat #</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Pos</th>
-                        <th>Race Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Trevor Stubbs</td>
-                        <td><input type="text" /></td>
-                        <td><input type="text" /></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Heat #</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Pos</th>
-                        <th>Race Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Trevor Stubbs</td>
-                        <td><input type="text" /></td>
-                        <td><input type="text" /></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-sm">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Heat #</th>
-                    </tr>
-                </thead>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Pos</th>
-                        <th>Race Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Trevor Stubbs</td>
-                        <td><input type="text" /></td>
-                        <td><input type="text" /></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    }
 </div>
 
 @code {
     [Parameter]
-    public List<HeatDTO> Heats { get; set; }
+    public List<List<HeatDTO>> ListOfHeats { get; set; }
 }
