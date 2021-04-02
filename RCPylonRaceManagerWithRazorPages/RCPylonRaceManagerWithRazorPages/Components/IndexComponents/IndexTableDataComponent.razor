@@ -1,7 +1,11 @@
 ﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
 
 <tr>
-    <td>@Season.Year</td>
+    <td>
+        <a class="text-decoration-none text-body" href="/season/@Season.Year">
+            @Season.Year
+        </a>
+    </td>
 </tr>
 
 @code {
