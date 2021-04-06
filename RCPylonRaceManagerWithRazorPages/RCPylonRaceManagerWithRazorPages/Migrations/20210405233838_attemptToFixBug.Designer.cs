@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RCPylonRaceManagerWithRazorPages.Data;
 
 namespace RCPylonRaceManagerWithRazorPages.Migrations
 {
     [DbContext(typeof(PylonDbContext))]
-    partial class PylonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210405233838_attemptToFixBug")]
+    partial class attemptToFixBug
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

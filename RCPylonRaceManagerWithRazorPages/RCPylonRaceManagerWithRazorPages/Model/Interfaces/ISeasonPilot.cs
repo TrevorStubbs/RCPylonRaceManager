@@ -9,7 +9,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Interfaces
     public interface ISeasonPilot
     {
         // Create
-        Task CreateASeasonPilot(SeasonPilotDTO seasonPilotDTO);
+        Task<int> CreateASeasonPilot(SeasonPilotDTO seasonPilotDTO);
         // Get 1
         Task<SeasonPilotDTO> GetASeasonPilot(int pilotId);
         // Get all

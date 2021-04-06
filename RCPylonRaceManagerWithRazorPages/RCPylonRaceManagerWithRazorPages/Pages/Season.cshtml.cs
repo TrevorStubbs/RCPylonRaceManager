@@ -31,13 +31,26 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
             SendObject = new SeasonTableSendObject()
             {
                 SeasonPilotDTOs = await _pilot.GetAllSeasonsPilots(),
+                SeasonYear = Season.Year
             };
+        }
+
+        public async Task<IActionResult> OnPost(SeasonPilotDTO seasonPilotDTO, int seasonYear)
+        {
+            var season = await _season.GetASeason(seasonYear);
+
+            seasonPilotDTO.SeasonId = season.Id;
+
+            await _pilot.CreateASeasonPilot(seasonPilotDTO);
+
+            return Page();
         }
     }
 
     public class SeasonTableSendObject
     {
         public List<SeasonPilotDTO> SeasonPilotDTOs { get; set; }
+        public int SeasonYear { get; set; }
     }
 
 }
