@@ -33,7 +33,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             };
 
             _context.Entry(seasonPilot).State = EntityState.Added;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
             return seasonPilot.Id;  
         }
