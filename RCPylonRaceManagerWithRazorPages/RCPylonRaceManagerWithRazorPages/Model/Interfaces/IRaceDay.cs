@@ -9,7 +9,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Interfaces
     public interface IRaceDay
     {
         // Create
-        Task CreateARaceDay(RaceDayDTO raceDay);
+        Task<int> CreateARaceDay(RaceDayDTO raceDay);
         // GetAll
         Task<List<RaceDayDTO>> GetAllRaceDays();
         // GetAllForSeason

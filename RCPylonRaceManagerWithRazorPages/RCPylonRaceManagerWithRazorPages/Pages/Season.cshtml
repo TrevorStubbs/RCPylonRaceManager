@@ -1,5 +1,5 @@
 ﻿@page "/season/{year:int?}"
-@using RCPylonRaceManagerWithRazorPages.Components.SeasonComponents 
+@using RCPylonRaceManagerWithRazorPages.Components.SeasonComponents
 @model RCPylonRaceManagerWithRazorPages.Pages.SeasonModel
 @{
     Layout = "_Layout";
@@ -14,6 +14,8 @@
     @(await Html.RenderComponentAsync<SeasonTableComponent>(RenderMode.ServerPrerendered, @Model.SendObject))
 </div>
 <div>
-    <button class="btn btn-primary">Start New Race Day</button>
+    <form asp-page-handler="NewRace" method="post">
+        <button type="submit" class="btn btn-primary">Start New Race Day</button>
+    </form>
     <button class="btn btn-outline-danger">Go Back</button>
 </div>

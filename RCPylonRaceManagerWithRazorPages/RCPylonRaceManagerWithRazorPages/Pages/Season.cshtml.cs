@@ -13,15 +13,17 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
     {
         private readonly ISeason _season;
         private readonly ISeasonPilot _pilot;
+        private readonly IRaceDay _race;
 
         public SeasonDTO Season { get; set; }
         public SeasonTableSendObject SendObject { get; set; }
 
 
-        public SeasonModel(ISeason season, ISeasonPilot pilot)
+        public SeasonModel(ISeason season, ISeasonPilot pilot, IRaceDay race)
         {
             _season = season;
             _pilot = pilot;
+            _race = race;
         }
 
         public async Task OnGet(int year)
@@ -35,7 +37,7 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
             };
         }
 
-        public async Task<IActionResult> OnPost(SeasonPilotDTO seasonPilotDTO, int seasonYear)
+        public async Task OnPost(SeasonPilotDTO seasonPilotDTO, int seasonYear)
         {
             var season = await _season.GetASeason(seasonYear);
 
@@ -43,7 +45,20 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
 
             await _pilot.CreateASeasonPilot(seasonPilotDTO);
 
-            return Page();
+            await OnGet(season.Year);
+
+            
+        }
+
+        public async Task<IActionResult> OnPostNewRace(RaceDayDTO newRace, int seasonYear)
+        {
+            var season = await _season.GetASeason(seasonYear);
+
+            newRace.SeasonId = season.Id;            
+
+            var raceId = await _race.CreateARaceDay(newRace);
+
+            return RedirectToPage("Race", raceId);
         }
     }
 

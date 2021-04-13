@@ -15,11 +15,13 @@ namespace RCPylonRaceManagerWithRazorPages
     {
         private readonly ISeason _season;
         private readonly ISeasonPilot _seasonPilot;
+        private readonly IRaceDay _raceDay;
 
-        public TestController(ISeason season, ISeasonPilot seasonPilot)
+        public TestController(ISeason season, ISeasonPilot seasonPilot, IRaceDay raceDay)
         {
             _season = season;
             _seasonPilot = seasonPilot;
+            _raceDay = raceDay;
         }
 
         [HttpGet]
@@ -53,6 +55,14 @@ namespace RCPylonRaceManagerWithRazorPages
             await _seasonPilot.CreateASeasonPilot(newPilot);
 
             return Ok();
+        }
+
+        [HttpPost, Route("newRace")]
+        public async Task<IActionResult> PostNewRace(RaceDayDTO newRace)
+        {
+            var id = await _raceDay.CreateARaceDay(newRace);
+
+            return Ok(id);
         }
     }
 }

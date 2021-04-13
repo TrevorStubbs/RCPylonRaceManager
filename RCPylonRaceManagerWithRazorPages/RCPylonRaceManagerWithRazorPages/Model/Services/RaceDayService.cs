@@ -20,16 +20,18 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             _context = context;
         }
 
-        public async Task CreateARaceDay(RaceDayDTO raceDay)
+        public async Task<int> CreateARaceDay(RaceDayDTO raceDay)
         {
             var raceDayEntity = new RaceDay()
             {
                 SeasonId = raceDay.SeasonId,
-                Date = raceDay.Date
+                Date = raceDay.Date == default ? DateTime.Today : raceDay.Date
             };
 
             _context.Entry(raceDayEntity).State = EntityState.Added;
             await _context.SaveChangesAsync();
+
+            return raceDayEntity.Id;
         }
 
         public async Task<List<RaceDayDTO>> GetAllRaceDays()
