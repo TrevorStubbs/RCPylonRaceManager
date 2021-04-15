@@ -43,11 +43,9 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
 
             seasonPilotDTO.SeasonId = season.Id;
 
-            await _pilot.CreateASeasonPilot(seasonPilotDTO);
+            var pilotId = await _pilot.CreateASeasonPilot(seasonPilotDTO);
 
-            await OnGet(season.Year);
-
-            
+            //return RedirectToPage("Season", season.Year);
         }
 
         public async Task<IActionResult> OnPostNewRace(RaceDayDTO newRace, int seasonYear)

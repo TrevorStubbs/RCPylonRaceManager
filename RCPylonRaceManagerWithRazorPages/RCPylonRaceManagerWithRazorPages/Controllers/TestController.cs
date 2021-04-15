@@ -50,9 +50,9 @@ namespace RCPylonRaceManagerWithRazorPages
                 LastName = newPilot.LastName,
                 AMANumber = newPilot.AMANumber,
                 Email = newPilot.Email
-            };
+            };            
 
-            await _seasonPilot.CreateASeasonPilot(newPilot);
+            var id = await _seasonPilot.CreateASeasonPilot(newPilot);
 
             return Ok();
         }
