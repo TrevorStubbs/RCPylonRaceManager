@@ -13,10 +13,10 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            @(await Html.RenderComponentAsync<SeasonTableComponent>(RenderMode.ServerPrerendered, @Model.SendObject))
+            @(await Html.RenderComponentAsync<SeasonTableComponent>(RenderMode.ServerPrerendered, Model.SendObject))
         </div>
         <div class="col-4">
-            @(await Html.RenderComponentAsync<SeasonRaceTableComponent>(RenderMode.ServerPrerendered, Model.SendObject)) 
+            @(await Html.RenderComponentAsync<SeasonRaceTableComponent>(RenderMode.ServerPrerendered, Model.RaceSendObject)) 
             @*TODO: make new sendobject for the racetable*@
         </div>
     </div>

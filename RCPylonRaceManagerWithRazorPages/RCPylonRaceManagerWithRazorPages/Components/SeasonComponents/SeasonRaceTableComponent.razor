@@ -1,25 +1,25 @@
-﻿<table class="table">
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+<table class="table">
     <thead>
         <tr class="text-center">
-            <th colspan="3">Pilot List</th>
+            <th colspan="3">Race Days</th>
         </tr>
     </thead>
     <thead>
         <tr>
-            <th>Pilot Name</th>
-            <th>Season Score</th>
-            <th>Email</th>
-            <th>AMA Number</th>
+            <th scope="col" style="width: 5%"></th>
+            <th scope="col">Date</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var pilot in SeasonPilotDTOs)
+        @foreach (var race in RaceDayDTOs)
         {
-            
+            <SeasonRaceTableDataComponent RaceDay="@race" />
         }
     </tbody>
 </table>
 
 @code {
-
+    [Parameter]
+    public List<RaceDayDTO> RaceDayDTOs { get; set; }
 }

@@ -89,7 +89,6 @@
     private bool shouldRender = false;
     protected override void OnParametersSet() => shouldRender = true;
 
-
     // TODO build update Modal and method
 
     public void OpenModal()
@@ -123,10 +122,4 @@
 
         StateHasChanged();
     }
-
-
-    @*protected override bool ShouldRender()
-        {
-            return shouldRender;
-        }*@
 }

@@ -17,6 +17,7 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
 
         public SeasonDTO Season { get; set; }
         public SeasonTableSendObject SendObject { get; set; }
+        public SeasonRaceTableSendObject RaceSendObject { get; set; }
 
 
         public SeasonModel(ISeason season, ISeasonPilot pilot, IRaceDay race)
@@ -32,8 +33,13 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
 
             SendObject = new SeasonTableSendObject()
             {
-                SeasonPilotDTOs = await _pilot.GetAllSeasonsPilots(),
+                SeasonPilotDTOs = await _pilot.GetAllSeasonsPilotsForASeason(Season.Id),
                 SeasonYear = Season.Year
+            };
+
+            RaceSendObject = new SeasonRaceTableSendObject()
+            {
+                RaceDayDTOs = await _race.GetAllRaceDaysForASeason(Season.Id)
             };
         }
 
@@ -64,6 +70,11 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
     {
         public List<SeasonPilotDTO> SeasonPilotDTOs { get; set; }
         public int SeasonYear { get; set; }
+    }
+
+    public class SeasonRaceTableSendObject
+    {
+        public List<RaceDayDTO> RaceDayDTOs { get; set; }
     }
 
 }

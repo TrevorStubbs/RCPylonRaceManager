@@ -1,5 +1,20 @@
-﻿<h3>SeasonRaceTableDataComponent</h3>
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+<tr>
+    <td scope="row">
+        <a class="btn btn-outline-secondary btn-block btn-sm" href="/race/@RaceDay.Id">
+            &#10151;
+        </a>
+        </td>
+    <td>
+        <a class="text-decoration-none text-body" href="/race/@RaceDay.Id">
+            @RaceDay.Date.ToShortDateString()
+        </a>
+    </td>
+</tr>
 
 @code {
-
+    [Parameter]
+    public RaceDayDTO RaceDay { get; set; }
 }
+

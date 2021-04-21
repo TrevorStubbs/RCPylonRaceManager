@@ -45,6 +45,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                 {
                     racesList.Add(new RaceDayDTO()
                     {
+                        Id = race.Id,
                         SeasonId = race.SeasonId,
                         Date = race.Date
                     });
@@ -65,6 +66,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                 {
                     racesList.Add(new RaceDayDTO()
                     {
+                        Id = race.Id,
                         SeasonId = race.SeasonId,
                         Date = race.Date
                     });
@@ -82,6 +84,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
 
             if (race != null)
             {
+                raceDTO.Id = race.Id;
                 raceDTO.SeasonId = race.SeasonId;
                 raceDTO.Date = race.Date;
             }
