@@ -115,7 +115,6 @@
             Email = this.EmailAddress
         };
 
-
         await SeasonModel.OnPost(newPilot, SeasonYear);
 
         SeasonPilotDTOs = await SeasonPilot.GetAllSeasonsPilotsForASeason(SeasonYear);
