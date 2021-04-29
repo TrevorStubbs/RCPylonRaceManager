@@ -60,7 +60,9 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
 
             newRace.SeasonId = season.Id;            
 
-            var raceId = await _race.CreateARaceDay(newRace);                        
+            var raceId = await _race.CreateARaceDay(newRace);
+
+            //return RedirectToRoute("../race/", raceId);            
 
             return RedirectToPage("race", raceId);
         }
