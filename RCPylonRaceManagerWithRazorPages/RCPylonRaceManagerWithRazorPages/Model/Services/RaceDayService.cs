@@ -29,7 +29,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             };
 
             _context.Entry(raceDayEntity).State = EntityState.Added;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
 
             return raceDayEntity.Id;
         }

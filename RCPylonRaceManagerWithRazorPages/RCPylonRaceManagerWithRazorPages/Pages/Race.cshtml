@@ -13,10 +13,10 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            @(await Html.RenderComponentAsync<RacePilotTableComponent>(RenderMode.WebAssemblyPrerendered, Model.PilotTable))
+            @(await Html.RenderComponentAsync<RacePilotTableComponent>(RenderMode.ServerPrerendered, Model.PilotTable))
         </div>
         <div class="col-4">
-            @(await Html.RenderComponentAsync<RaceDayRoundTableComponent>(RenderMode.WebAssemblyPrerendered, Model.RoundTable))
+            @(await Html.RenderComponentAsync<RaceDayRoundTableComponent>(RenderMode.ServerPrerendered, Model.RoundTable))
         </div>
             <a class="btn btn-primary" asp-page="/Round">Start New Round</a>
     </div>

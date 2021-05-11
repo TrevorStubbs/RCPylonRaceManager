@@ -9,7 +9,6 @@
 <div class="text-center">
     <h1 class="display-4">@Model.Season.Year Season</h1>
 </div>
-@*TODO: Make as Component and Render Dynamically*@
 <div class="container">
     <div class="row">
         <div class="col-8">
@@ -17,7 +16,6 @@
         </div>
         <div class="col-4">
             @(await Html.RenderComponentAsync<SeasonRaceTableComponent>(RenderMode.ServerPrerendered, Model.RaceSendObject)) 
-            @*TODO: make new sendobject for the racetable*@
         </div>
     </div>
 </div>

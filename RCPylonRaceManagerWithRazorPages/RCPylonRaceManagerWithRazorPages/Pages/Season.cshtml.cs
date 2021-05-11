@@ -54,7 +54,8 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
             //return RedirectToPage("Season", season.Year);
         }
 
-        public async Task<IActionResult> OnPostNewRace(RaceDayDTO newRace, int seasonYear)
+        // TODO: Need to fix the rerouting/Redirecting
+        public async Task<RedirectToPageResult> OnPostNewRace(RaceDayDTO newRace, int seasonYear)
         {
             var season = await _season.GetASeason(seasonYear);
 
@@ -62,9 +63,10 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
 
             var raceId = await _race.CreateARaceDay(newRace);
 
-            //return RedirectToRoute("../race/", raceId);            
+            // return RedirectToRoute($"../../race/{raceId}");            
 
-            return RedirectToPage("race", raceId);
+            return RedirectToPage($"Race/{raceId}", raceId);
+
         }
     }
 
