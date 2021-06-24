@@ -1,0 +1,10 @@
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+<tr>
+    <td>@Pilot.PilotInfo.FirstName @Pilot.PilotInfo.LastName</td>
+</tr>
+
+@code {
+    [Parameter]
+    public RaceDayPilotDTO Pilot { get; set; }
+}

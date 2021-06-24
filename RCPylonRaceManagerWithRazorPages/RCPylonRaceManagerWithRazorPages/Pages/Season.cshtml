@@ -1,0 +1,28 @@
+﻿@page "/season/{year:int?}"
+@using RCPylonRaceManagerWithRazorPages.Components.SeasonComponents
+@model RCPylonRaceManagerWithRazorPages.Pages.SeasonModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Season Panel";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@Model.Season.Year Season</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            @(await Html.RenderComponentAsync<SeasonTableComponent>(RenderMode.ServerPrerendered, Model.SendObject))
+        </div>
+        <div class="col-4">
+            @(await Html.RenderComponentAsync<SeasonRaceTableComponent>(RenderMode.ServerPrerendered, Model.RaceSendObject)) 
+        </div>
+    </div>
+</div>
+<div>
+    <form asp-page-handler="NewRace" method="post">
+        <button type="submit" class="btn btn-primary">Start New Race Day</button>
+        <input type="hidden" name="seasonYear" value="@Model.Season.Year" />
+    </form>
+    <button class="btn btn-outline-danger">Go Back</button>
+</div>

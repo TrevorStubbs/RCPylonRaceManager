@@ -1,0 +1,20 @@
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Pilots with Broken Planes</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pilot in OTSPilots)
+        {
+            <RoundOTSPilotTableDataComponent Pilot="@pilot" />
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter]
+    public List<RaceDayPilotDTO> OTSPilots { get; set; }
+}

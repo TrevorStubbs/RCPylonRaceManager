@@ -1,0 +1,19 @@
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+
+<div class="container">
+    @foreach (var heats in ListOfHeats)
+    {
+        <div class="row">
+            @foreach (var heat in heats)
+            {
+                <RoundHeatTableComponent Heat="@heat" />
+            }
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public List<List<HeatDTO>> ListOfHeats { get; set; }
+}

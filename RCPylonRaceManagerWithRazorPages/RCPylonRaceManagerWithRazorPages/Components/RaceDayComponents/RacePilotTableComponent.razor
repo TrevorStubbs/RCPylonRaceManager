@@ -1,0 +1,75 @@
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+@using Microsoft.AspNetCore.Components.Web
+@using System.ComponentModel.DataAnnotations;
+
+<table class="table">
+    <thead>
+        <tr class="text-center">
+            <th colspan="5">Race Pilots</th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>Has Paid</th>
+            <th>Pilot Name</th>
+            <th>Score</th>
+            <th>Fastest Race Time</th>
+            <th>Last Race Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pilot in Pilots)
+        {
+            <RacePilotTableDataComponent Pilot="@pilot" />
+        }
+    </tbody>
+</table>
+
+<button class="btn btn-primary" @onclick="() => OpenRaceModal()">Add Pilot</button>
+
+<div class="modal @ModalClass" tabindex="-1" role="dialog" style="display:@ModalDisplay">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Register New Pilot</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="() => CloseRaceModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h1>Modal Stuff Here</h1>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="() => CloseRaceModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public List<RaceDayPilotDTO> Pilots { get; set; }
+
+    public string ModalDisplay = "none;";
+    public string ModalClass = "";
+    public bool ShowBackdrop = false;
+
+    private bool shouldRender = false;
+    protected override void OnParametersSet() => shouldRender = true;
+
+    // TODO build update Modal and method
+
+    public void OpenRaceModal()
+    {
+        ModalDisplay = "block;";
+        ModalClass = "Show";
+        ShowBackdrop = true;
+    }
+
+    public void CloseRaceModal()
+    {
+        ModalDisplay = "none";
+        ModalClass = "";
+        ShowBackdrop = false;
+    }
+}

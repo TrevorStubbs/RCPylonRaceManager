@@ -1,0 +1,19 @@
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+<tr>    
+    <td scope="row">
+        <a class="btn btn-outline-secondary btn-block btn-sm" href="/season/@Season.Year">
+            &#10151;
+        </a>
+    </td>
+    <td>
+        <a class="text-decoration-none text-body" href="/season/@Season.Year">
+            @Season.Year
+        </a>
+    </td>
+</tr>
+
+@code {
+    [Parameter]
+    public SeasonDTO Season { get; set; }
+}
