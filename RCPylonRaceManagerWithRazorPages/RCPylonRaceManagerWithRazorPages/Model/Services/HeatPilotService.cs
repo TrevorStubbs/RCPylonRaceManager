@@ -14,10 +14,12 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
     public class HeatPilotService : IHeatPilot
     {
         private readonly PylonDbContext _context;
+        private readonly ISeasonPilot _seasonPilot;
 
-        public HeatPilotService(PylonDbContext context)
+        public HeatPilotService(PylonDbContext context, ISeasonPilot seasonPilot)
         {
             _context = context;
+            _seasonPilot = seasonPilot;
         }
 
         public async Task CreateHeatPilot(HeatPilotDTO newPilot)
@@ -51,7 +53,8 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                         HeatId = pilot.HeatId,
                         Position = pilot.Position,
                         RaceTime = pilot.RaceTime,
-                        IsDNF = pilot.IsDNF
+                        IsDNF = pilot.IsDNF,
+                        PilotInfo = await _seasonPilot.GetASeasonPilot(pilot.SeasonPilotId)
                     });
                 }
             }
@@ -59,7 +62,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             return pilotList;
         }
 
-        public async Task<List<HeatPilotDTO>> GetALlHeatPilotsForHeat(int heatId)
+        public async Task<List<HeatPilotDTO>> GetAllHeatPilotsForHeat(int heatId)
         {
             var pilots = await _context.HeatPilots.Where(x => x.HeatId == heatId).ToListAsync();
 
@@ -75,7 +78,8 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                         HeatId = pilot.HeatId,
                         Position = pilot.Position,
                         RaceTime = pilot.RaceTime,
-                        IsDNF = pilot.IsDNF
+                        IsDNF = pilot.IsDNF,
+                        PilotInfo = await _seasonPilot.GetASeasonPilot(pilot.SeasonPilotId)
                     });
                 }
             }
@@ -96,6 +100,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                 pilotDTO.Position = pilot.Position;
                 pilotDTO.RaceTime = pilot.RaceTime;
                 pilotDTO.IsDNF = pilot.IsDNF;
+                pilotDTO.PilotInfo = await _seasonPilot.GetASeasonPilot(pilot.SeasonPilotId);
             }
 
             return pilotDTO;

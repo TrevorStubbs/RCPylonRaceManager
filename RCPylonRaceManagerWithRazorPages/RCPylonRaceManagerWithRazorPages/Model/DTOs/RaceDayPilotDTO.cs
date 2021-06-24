@@ -13,5 +13,6 @@ namespace RCPylonRaceManagerWithRazorPages.Model.DTOs
         public bool IsOTS { get; set; }
         public TimeSpan FastestRaceTime { get; set; }
         public TimeSpan LastRaceTime { get; set; }
+        public SeasonPilotDTO PilotInfo { get; set; }
     }
 }

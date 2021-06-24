@@ -20,16 +20,18 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             _context = context;
         }
 
-        public async Task CreateARaceDay(RaceDayDTO raceDay)
+        public async Task<int> CreateARaceDay(RaceDayDTO raceDay)
         {
             var raceDayEntity = new RaceDay()
             {
                 SeasonId = raceDay.SeasonId,
-                Date = raceDay.Date
+                Date = raceDay.Date == default ? DateTime.Today : raceDay.Date
             };
 
             _context.Entry(raceDayEntity).State = EntityState.Added;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
+
+            return raceDayEntity.Id;
         }
 
         public async Task<List<RaceDayDTO>> GetAllRaceDays()
@@ -43,6 +45,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                 {
                     racesList.Add(new RaceDayDTO()
                     {
+                        Id = race.Id,
                         SeasonId = race.SeasonId,
                         Date = race.Date
                     });
@@ -63,6 +66,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                 {
                     racesList.Add(new RaceDayDTO()
                     {
+                        Id = race.Id,
                         SeasonId = race.SeasonId,
                         Date = race.Date
                     });
@@ -80,6 +84,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
 
             if (race != null)
             {
+                raceDTO.Id = race.Id;
                 raceDTO.SeasonId = race.SeasonId;
                 raceDTO.Date = race.Date;
             }

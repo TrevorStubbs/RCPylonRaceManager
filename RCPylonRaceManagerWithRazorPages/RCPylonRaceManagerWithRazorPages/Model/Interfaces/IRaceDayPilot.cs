@@ -14,6 +14,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Interfaces
         Task<List<RaceDayPilotDTO>> GetAllRaceDayPilots();
         // GetAllRaceDayPilotsForRaceDay
         Task<List<RaceDayPilotDTO>> GetAllRaceDayPilotsForARaceDay(int raceDayId);
+        Task<List<RaceDayPilotDTO>> GetAllRaceDayPilotsWhoAreOTS(int raceDayId);
         // GetARaceDayPilot
         Task<RaceDayPilotDTO> GetARaceDayPilot(int seasonPilotId, int raceDayId);
         // UpdateRaceDayPilot

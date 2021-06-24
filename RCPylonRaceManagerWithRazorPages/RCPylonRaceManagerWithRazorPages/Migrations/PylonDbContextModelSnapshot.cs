@@ -37,6 +37,20 @@ namespace RCPylonRaceManagerWithRazorPages.Migrations
                     b.HasIndex("RoundId");
 
                     b.ToTable("Heats");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            HeatNumber = 1,
+                            RoundId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            HeatNumber = 2,
+                            RoundId = 1
+                        });
                 });
 
             modelBuilder.Entity("RCPylonRaceManagerWithRazorPages.Model.Entities.HeatPilot", b =>
@@ -69,6 +83,24 @@ namespace RCPylonRaceManagerWithRazorPages.Migrations
                     b.HasIndex("RaceDayPilotRaceDayId", "RaceDayPilotSeasonPilotId");
 
                     b.ToTable("HeatPilots");
+
+                    b.HasData(
+                        new
+                        {
+                            SeasonPilotId = 1,
+                            HeatId = 1,
+                            IsDNF = false,
+                            Position = 1,
+                            RaceTime = new TimeSpan(0, 0, 3, 39, 0)
+                        },
+                        new
+                        {
+                            SeasonPilotId = 2,
+                            HeatId = 1,
+                            IsDNF = false,
+                            Position = 2,
+                            RaceTime = new TimeSpan(0, 0, 3, 40, 0)
+                        });
                 });
 
             modelBuilder.Entity("RCPylonRaceManagerWithRazorPages.Model.Entities.RaceDay", b =>
@@ -89,6 +121,20 @@ namespace RCPylonRaceManagerWithRazorPages.Migrations
                     b.HasIndex("SeasonId");
 
                     b.ToTable("RaceDays");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Date = new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Date = new DateTime(2021, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            SeasonId = 1
+                        });
                 });
 
             modelBuilder.Entity("RCPylonRaceManagerWithRazorPages.Model.Entities.RaceDayPilot", b =>
@@ -117,6 +163,38 @@ namespace RCPylonRaceManagerWithRazorPages.Migrations
                     b.HasKey("RaceDayId", "SeasonPilotId");
 
                     b.ToTable("RaceDayPilots");
+
+                    b.HasData(
+                        new
+                        {
+                            RaceDayId = 1,
+                            SeasonPilotId = 1,
+                            FastestRaceTime = new TimeSpan(0, 0, 3, 22, 0),
+                            HasPaid = true,
+                            IsOTS = false,
+                            LastRaceTime = new TimeSpan(0, 0, 3, 40, 0),
+                            RaceDayScore = 10
+                        },
+                        new
+                        {
+                            RaceDayId = 1,
+                            SeasonPilotId = 2,
+                            FastestRaceTime = new TimeSpan(0, 0, 3, 20, 0),
+                            HasPaid = false,
+                            IsOTS = false,
+                            LastRaceTime = new TimeSpan(0, 0, 3, 40, 0),
+                            RaceDayScore = 9
+                        },
+                        new
+                        {
+                            RaceDayId = 1,
+                            SeasonPilotId = 3,
+                            FastestRaceTime = new TimeSpan(0, 0, 3, 25, 0),
+                            HasPaid = true,
+                            IsOTS = true,
+                            LastRaceTime = new TimeSpan(0, 0, 3, 59, 0),
+                            RaceDayScore = 5
+                        });
                 });
 
             modelBuilder.Entity("RCPylonRaceManagerWithRazorPages.Model.Entities.Round", b =>
@@ -137,6 +215,20 @@ namespace RCPylonRaceManagerWithRazorPages.Migrations
                     b.HasIndex("RaceDayId");
 
                     b.ToTable("Rounds");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            RaceDayId = 1,
+                            RoundNumber = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            RaceDayId = 1,
+                            RoundNumber = 2
+                        });
                 });
 
             modelBuilder.Entity("RCPylonRaceManagerWithRazorPages.Model.Entities.Season", b =>
@@ -203,6 +295,38 @@ namespace RCPylonRaceManagerWithRazorPages.Migrations
                     b.HasIndex("RaceDayPilotRaceDayId", "RaceDayPilotSeasonPilotId");
 
                     b.ToTable("SeasonPilots");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AMANumber = 12345,
+                            Email = "stubbste@gmail.com",
+                            FirstName = "Trevor",
+                            LastName = "Stubbs",
+                            SeasonId = 1,
+                            SeasonScore = 21
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AMANumber = 56789,
+                            Email = "roycstubbs@gmail.com",
+                            FirstName = "Roy",
+                            LastName = "Stubbs",
+                            SeasonId = 1,
+                            SeasonScore = 20
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AMANumber = 102354,
+                            Email = "daveBeardsley@gmail.com",
+                            FirstName = "David",
+                            LastName = "Beardsley",
+                            SeasonId = 1,
+                            SeasonScore = 15
+                        });
                 });
 
             modelBuilder.Entity("RCPylonRaceManagerWithRazorPages.Model.Entities.Heat", b =>

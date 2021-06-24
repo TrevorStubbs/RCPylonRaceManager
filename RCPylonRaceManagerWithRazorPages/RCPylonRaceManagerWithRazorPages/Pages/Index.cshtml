@@ -1,4 +1,5 @@
 ﻿@page
+@using RCPylonRaceManagerWithRazorPages.Components.IndexComponents
 @model IndexModel
 @{
     ViewData["Title"] = "Season Select";
@@ -7,27 +8,19 @@
 <div class="text-center">
     <h1 class="display-4">Season Select</h1>
 </div>
-@*TODO: Make Dynamic and in a Component*@
+@*TODO: Make as Component and Render Dynamically*@
 <div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Year</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2021</td>
-            </tr>
-            <tr>
-                <td>2022</td>
-            </tr>
-            <tr>
-                <td>2023</td>
-            </tr>
-        </tbody>
-    </table>
-    <a class="btn btn-primary" asp-page="/Season">Go To Season</a>
+    @(await Html.RenderComponentAsync<IndexTableComponent>(RenderMode.WebAssemblyPrerendered, Model.SendObject))
+    <a class="btn btn-primary" asp-page="/Season" asp-route-year="2021">Go To Season</a>
+</div>
+<div>
     <button class="btn btn-primary">Add Season</button>
     <button class="btn btn-danger">Quit</button>
+</div>
+@*Remove After Testing*@
+<hr/>
+<p>Remove after testing</p>
+<div>
+    <a class="btn btn-primary" asp-page="/Race" asp-route-raceId="9">Go To Race</a>
+    <a class="btn btn-primary" asp-page="/Round" asp-route-roundId="1">Go To Round</a>
 </div>

@@ -1,0 +1,10 @@
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+<tr>
+    <td>Round: @Round.RoundNumber</td>
+</tr>
+
+@code {
+    [Parameter]
+    public RoundDTO Round { get; set; }
+}

@@ -1,4 +1,6 @@
 ﻿@page
+@using RCPylonRaceManagerWithRazorPages.Components.RoundComponents
+@using RCPylonRaceManagerWithRazorPages.Model.DTOs
 @model RCPylonRaceManagerWithRazorPages.Pages.RoundModel
 @{
     Layout = "_Layout";
@@ -6,5 +8,16 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Round Panel</h1>
+    <h1 class="display-4">Round @Model.Round.RoundNumber</h1>
+</div>
+
+@*TODO: Make as Component and Render Dynamically*@
+<div>
+    @(await Html.RenderComponentAsync<RoundHeatTableGridComponent>(RenderMode.WebAssemblyPrerendered, Model.HeatTables))
+</div>
+<div class="container">
+    @(await Html.RenderComponentAsync<RoundOTSPilotTableComponent>(RenderMode.WebAssemblyPrerendered, Model.OTSPilots))
+</div>
+<div>
+    <button class="btn btn-primary">Finish Round</button>
 </div>

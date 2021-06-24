@@ -20,7 +20,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
         }
 
         // Create
-        public async Task CreateASeasonPilot(SeasonPilotDTO seasonPilotDTO)
+        public async Task<int> CreateASeasonPilot(SeasonPilotDTO seasonPilotDTO)
         {
             var seasonPilot = new SeasonPilot()
             {
@@ -33,7 +33,9 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             };
 
             _context.Entry(seasonPilot).State = EntityState.Added;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
+
+            return seasonPilot.Id;  
         }
 
         // Get 1

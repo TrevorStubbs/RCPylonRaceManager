@@ -14,10 +14,12 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
     public class RoundService : IRound
     {
         private readonly PylonDbContext _context;
+        private readonly IHeat _heat;
 
-        public RoundService(PylonDbContext context)
+        public RoundService(PylonDbContext context, IHeat heat)
         {
             _context = context;
+            _heat = heat;
         }
 
         public async Task CreateRound(RoundDTO newRound)
@@ -42,10 +44,13 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             {
                 foreach (var round in rounds)
                 {
+                    var heats = await _heat.GetAllHeatsForRound(round.Id);
+
                     roundList.Add(new RoundDTO()
                     {
                         RaceDayId = round.RaceDayId,
-                        RoundNumber = round.RoundNumber
+                        RoundNumber = round.RoundNumber,
+                        Heats = heats
                     });
                 }
             }
@@ -53,7 +58,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             return roundList;
         }
 
-        public async Task<List<RoundDTO>> GetALLRoundsForRaceDay(int raceDayId)
+        public async Task<List<RoundDTO>> GetAllRoundsForRaceDay(int raceDayId)
         {
             var rounds = await _context.Rounds.Where(x => x.RaceDayId == raceDayId).ToListAsync();
 
@@ -63,10 +68,13 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             {
                 foreach (var round in rounds)
                 {
+                    var heats = await _heat.GetAllHeatsForRound(round.Id);
+
                     roundList.Add(new RoundDTO()
                     {
                         RaceDayId = round.RaceDayId,
-                        RoundNumber = round.RoundNumber
+                        RoundNumber = round.RoundNumber,
+                        Heats = heats
                     });
                 }
             }
@@ -78,12 +86,15 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
         {
             var round = await _context.Rounds.FirstOrDefaultAsync(x => x.Id == roundId);
 
+            var heats = await _heat.GetAllHeatsForRound(round.Id);
+
             var roundDTO = new RoundDTO();
 
             if (round != null)
             {
                 roundDTO.RaceDayId = round.RaceDayId;
                 roundDTO.RoundNumber = round.RoundNumber;
+                roundDTO.Heats = heats;
             }
 
             return roundDTO;

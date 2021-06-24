@@ -13,7 +13,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Interfaces
         // GetAllRounds
         Task<List<RoundDTO>> GetAllRounds();
         // GetAllRoundsForRaceDay        
-        Task<List<RoundDTO>> GetALLRoundsForRaceDay(int raceDayId);
+        Task<List<RoundDTO>> GetAllRoundsForRaceDay(int raceDayId);
         // GetRound
         Task<RoundDTO> GetARound(int roundId);
         // Update

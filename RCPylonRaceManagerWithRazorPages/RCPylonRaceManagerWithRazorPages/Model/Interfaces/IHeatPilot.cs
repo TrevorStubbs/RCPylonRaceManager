@@ -13,7 +13,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Interfaces
         // GetAllHeatPilots
         Task<List<HeatPilotDTO>> GetAllHeatPilots();
         // GetAllHeatPilotsForHeat
-        Task<List<HeatPilotDTO>> GetALlHeatPilotsForHeat(int heatId);
+        Task<List<HeatPilotDTO>> GetAllHeatPilotsForHeat(int heatId);
         // GetAHeatPilot
         Task<HeatPilotDTO> GetHeatPilot(int seasonPilotId, int heatId);
         // UpdateHeatPilot

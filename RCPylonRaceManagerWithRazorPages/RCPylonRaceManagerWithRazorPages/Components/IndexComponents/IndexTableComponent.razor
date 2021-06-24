@@ -1,0 +1,23 @@
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col" style="width: 5%"></th>
+            <th scope="col">Year</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var season in Seasons)
+        {
+            <IndexTableDataComponent Season="@season" />
+        }
+    </tbody>
+</table>
+
+
+
+@code {
+    [Parameter]
+    public List<SeasonDTO> Seasons { get; set; }
+}

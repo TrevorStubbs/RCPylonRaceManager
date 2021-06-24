@@ -1,0 +1,23 @@
+﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+@using Microsoft.AspNetCore.Html
+
+<tr>
+    @if (Pilot.HasPaid)
+    {
+        <td><input type="checkbox" checked /></td>
+    }
+    else
+    {
+        <td><input type="checkbox" /></td>
+    }
+    <td>@Pilot.PilotInfo.FirstName @Pilot.PilotInfo.LastName</td>
+    <td>@Pilot.RaceDayScore</td>
+    <td>@Pilot.FastestRaceTime</td>
+    <td>@Pilot.LastRaceTime</td>
+</tr>
+
+@code {
+    [Parameter]
+    public RaceDayPilotDTO Pilot { get; set; }
+
+}

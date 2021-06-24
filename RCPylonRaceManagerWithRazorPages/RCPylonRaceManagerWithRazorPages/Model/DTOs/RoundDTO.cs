@@ -8,5 +8,6 @@ namespace RCPylonRaceManagerWithRazorPages.Model.DTOs
     {
         public int RaceDayId { get; set; }
         public int RoundNumber { get; set; }
+        public List<HeatDTO> Heats { get; set; }
     }
 }

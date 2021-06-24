@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using RCPylonRaceManagerWithRazorPages.Data;
 using RCPylonRaceManagerWithRazorPages.Model.Interfaces;
 using RCPylonRaceManagerWithRazorPages.Model.Services;
+using RCPylonRaceManagerWithRazorPages.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,8 @@ namespace RCPylonRaceManagerWithRazorPages
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddServerSideBlazor();
+            services.AddMvc();
 
             services.AddDbContext<PylonDbContext>(options =>
             {
@@ -43,7 +46,9 @@ namespace RCPylonRaceManagerWithRazorPages
             services.AddTransient<IRaceDayPilot, RaceDayPilotService>();
             services.AddTransient<IRound, RoundService>();
             services.AddTransient<ISeasonPilot, SeasonPilotService>();
-            services.AddTransient<ISeason, SeasonService>();            
+            services.AddTransient<ISeason, SeasonService>();
+
+            services.AddTransient<SeasonModel>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,16 +65,18 @@ namespace RCPylonRaceManagerWithRazorPages
                 app.UseHsts();
             }
 
+            app.UseRouting();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/_Host");
             });
         }
     }

@@ -38,8 +38,8 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             var seasonDTO = new SeasonDTO();
             if (season != null)
             {
+                seasonDTO.Id = season.Id;
                 seasonDTO.Year = season.Year;
-
             }
 
             return seasonDTO;
@@ -57,6 +57,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                 {
                     seasonsDTOs.Add(new SeasonDTO
                     {
+                        Id = season.Id,
                         Year = season.Year
                     });
                 }
