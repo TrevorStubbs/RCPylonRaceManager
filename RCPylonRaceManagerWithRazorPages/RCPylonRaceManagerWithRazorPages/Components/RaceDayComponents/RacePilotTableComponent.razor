@@ -1,6 +1,7 @@
 ﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
 @using Microsoft.AspNetCore.Components.Web
 @using System.ComponentModel.DataAnnotations;
+@inject RCPylonRaceManagerWithRazorPages.Pages.RaceModel RaceModel
 
 <table class="table">
     <thead>
@@ -25,7 +26,7 @@
     </tbody>
 </table>
 
-<button class="btn btn-primary" @onclick="() => OpenRaceModal()">Add Pilot</button>
+<button class="btn btn-primary" @onclick="() => OpenRaceModal()">Add Pilots</button>
 
 <div class="modal @ModalClass" tabindex="-1" role="dialog" style="display:@ModalDisplay">
     <div class="modal-dialog" role="document">
@@ -37,12 +38,18 @@
                 </button>
             </div>
             <div class="modal-body">
-                <ul>
-                    @foreach (var pilot in SeasonPilots)
-                    {
-                        <li>@pilot.FirstName</li>
-                    }
-                </ul>
+                <form>
+                    <ul>
+                        @foreach (var pilot in SeasonPilots)
+                        {
+                            <li>
+                                <input type="checkbox" id="@pilot.Id" name="seasonPilot" value="@pilot.Id" checked="@IsChecked(pilot.Id)"/>
+                                <label for="@pilot.Id">@pilot.FirstName</label>
+                            </li>
+                        }
+                    </ul>
+                    <button type="submit" class="btn btn-primary" @onclick="() => PostRacePilots()">Add Pilots</button>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="() => CloseRaceModal()">Close</button>
@@ -78,5 +85,21 @@
         ModalDisplay = "none";
         ModalClass = "";
         ShowBackdrop = false;
+    }
+
+    public async Task PostRacePilots()
+    {
+
+    }
+
+    public string IsChecked(int pilotId)
+    {
+        foreach (var pilot in Pilots)
+        {
+            if (pilot.SeasonPilotId == pilotId)
+                return "Checked";
+        }
+
+        return null;
     }
 }

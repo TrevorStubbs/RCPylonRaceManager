@@ -50,6 +50,11 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
         {
 
         }
+
+        public async Task OnPostAddPilots()
+        {
+
+        }
     }
 
     public class RacePilotTableSendObject

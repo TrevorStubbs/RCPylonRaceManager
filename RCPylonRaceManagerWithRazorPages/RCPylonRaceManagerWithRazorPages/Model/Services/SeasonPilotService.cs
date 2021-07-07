@@ -46,7 +46,8 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
             var seasonPilotDTO = new SeasonPilotDTO();
             if (seasonPilot != null)
             {
-                seasonPilotDTO.SeasonId = seasonPilot.Id;
+                seasonPilotDTO.Id = seasonPilot.Id;
+                seasonPilotDTO.SeasonId = seasonPilot.SeasonId;
                 seasonPilotDTO.FirstName = seasonPilot.FirstName;
                 seasonPilotDTO.LastName = seasonPilot.LastName;
                 seasonPilotDTO.AMANumber = seasonPilot.AMANumber;
@@ -70,7 +71,8 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                 {
                     seasonPilotsDTOs.Add(new SeasonPilotDTO
                     {
-                        SeasonId = pilot.Id,
+                        Id = pilot.Id,
+                        SeasonId = pilot.SeasonId,
                         FirstName = pilot.FirstName,
                         LastName = pilot.LastName,
                         AMANumber = pilot.AMANumber,
@@ -95,7 +97,8 @@ namespace RCPylonRaceManagerWithRazorPages.Model.Services
                 {
                     seasonPilotsDTOs.Add(new SeasonPilotDTO
                     {
-                        SeasonId = pilot.Id,
+                        Id = pilot.Id,
+                        SeasonId = pilot.SeasonId,
                         FirstName = pilot.FirstName,
                         LastName = pilot.LastName,
                         AMANumber = pilot.AMANumber,

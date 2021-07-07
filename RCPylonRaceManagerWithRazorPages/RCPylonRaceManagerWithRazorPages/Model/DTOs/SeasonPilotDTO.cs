@@ -7,6 +7,7 @@ namespace RCPylonRaceManagerWithRazorPages.Model.DTOs
 {
     public class SeasonPilotDTO
     {
+        public int Id { get; set; }
         public int SeasonId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
