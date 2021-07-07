@@ -18,12 +18,14 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
         private readonly IRound _round;
         private readonly IRaceDay _raceDay;
         private readonly IRaceDayPilot _pilots;
+        private readonly ISeasonPilot _seasonPilot;
 
-        public RaceModel(IRound round, IRaceDay raceDay, IRaceDayPilot pilots)
+        public RaceModel(IRound round, IRaceDay raceDay, IRaceDayPilot pilots, ISeasonPilot seasonPilot)
         {
             _round = round;
             _raceDay = raceDay;
             _pilots = pilots;
+            _seasonPilot = seasonPilot;
         }
 
         public async Task OnGet(int raceId)
@@ -34,7 +36,8 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
 
             PilotTable = new RacePilotTableSendObject
             {
-                Pilots = await _pilots.GetAllRaceDayPilotsForARaceDay(raceId)
+                Pilots = await _pilots.GetAllRaceDayPilotsForARaceDay(raceId),
+                SeasonPilots = await _seasonPilot.GetAllSeasonsPilotsForASeason(raceDay.SeasonId)
             };
 
             RoundTable = new RaceRoundSendObject
@@ -42,11 +45,17 @@ namespace RCPylonRaceManagerWithRazorPages.Pages
                 Rounds = await _round.GetAllRoundsForRaceDay(raceId)
             };
         }
+
+        public async Task OnPostNewRound()
+        {
+
+        }
     }
 
     public class RacePilotTableSendObject
     {
         public List<RaceDayPilotDTO> Pilots { get; set; }
+        public List<SeasonPilotDTO> SeasonPilots { get; set; }
     }
 
     public class RaceRoundSendObject

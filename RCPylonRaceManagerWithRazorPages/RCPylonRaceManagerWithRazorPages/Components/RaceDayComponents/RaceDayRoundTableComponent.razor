@@ -1,4 +1,8 @@
 ﻿@using RCPylonRaceManagerWithRazorPages.Model.DTOs
+@using Microsoft.AspNetCore.Components.Web
+
+@using System.ComponentModel.DataAnnotations;
+
 
 <table class="table table-hover">
     <thead>
@@ -14,8 +18,14 @@
     </tbody>
 </table>
 <button class="btn btn-primary">Go To Round</button>
+<button class="btn btn-primary" @onclick="() => StartNewRound()">Start New Round</button>
 
 @code {
     [Parameter]
     public List<RoundDTO> Rounds { get; set; }
+
+    public void StartNewRound()
+    {
+
+    }
 }

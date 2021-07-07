@@ -13,10 +13,10 @@
 
 @*TODO: Make as Component and Render Dynamically*@
 <div>
-    @(await Html.RenderComponentAsync<RoundHeatTableGridComponent>(RenderMode.WebAssemblyPrerendered, Model.HeatTables))
+    @(await Html.RenderComponentAsync<RoundHeatTableGridComponent>(RenderMode.ServerPrerendered, Model.HeatTables))
 </div>
 <div class="container">
-    @(await Html.RenderComponentAsync<RoundOTSPilotTableComponent>(RenderMode.WebAssemblyPrerendered, Model.OTSPilots))
+    @(await Html.RenderComponentAsync<RoundOTSPilotTableComponent>(RenderMode.ServerPrerendered, Model.OTSPilots))
 </div>
 <div>
     <button class="btn btn-primary">Finish Round</button>

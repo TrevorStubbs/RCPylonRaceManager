@@ -37,7 +37,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h1>Modal Stuff Here</h1>
+                <ul>
+                    @foreach (var pilot in SeasonPilots)
+                    {
+                        <li>@pilot.FirstName</li>
+                    }
+                </ul>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="() => CloseRaceModal()">Close</button>
@@ -49,6 +54,8 @@
 @code {
     [Parameter]
     public List<RaceDayPilotDTO> Pilots { get; set; }
+    [Parameter]
+    public List<SeasonPilotDTO> SeasonPilots { get; set; }
 
     public string ModalDisplay = "none;";
     public string ModalClass = "";
